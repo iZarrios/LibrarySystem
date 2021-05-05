@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class LoginPage implements ActionListener {
 
-    private final String USERNAME = "", PASSWORD = "";// the admin account credentials
+    private final String USERNAME = "admin", PASSWORD = "admin";// the admin account credentials
     private JFrame frame = new JFrame(); // we can add more admins by making a class where it returns an array or a
                                          // hashmap but as it is not needed here :)
                                          // making an internal array (hard coded)

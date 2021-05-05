@@ -3,10 +3,8 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-//import java.io.FileWriter;
 
 public class UserData {
-//    private ArrayList<Librarian> data = new ArrayList<Librarian>();
     private ArrayList<String> data = new ArrayList<String>();
     private String path = "";
 
@@ -34,13 +32,6 @@ public class UserData {
         this.path = path;
     }
 
-    public static void main(String[] args) {
-        UserData auth = new UserData(".\\src\\com\\company\\db.txt");// relative path to the .txt file
-//        auth.getData();
-        auth.saveData();
-
-    }
-
     public UserData(String path) {
         this.path = path;
     }
@@ -53,7 +44,6 @@ public class UserData {
                 data.add(myReader.nextLine());
             }
             myReader.close();
-//            System.out.println(data);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -61,13 +51,10 @@ public class UserData {
     }
     public void saveData() {
         try {
-//            FileWriter fWrite = new FileWriter(path);
             PrintWriter out = new PrintWriter(path);
             for (int i = 0; i < data.size(); i++) {
-//                fWrite.write(String.valueOf(data.get(i)));
                 out.println(String.valueOf(data.get(i)));
             }
-//            fWrite.close();
             out.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {

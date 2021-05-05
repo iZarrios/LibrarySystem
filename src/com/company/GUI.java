@@ -42,10 +42,8 @@ public class GUI implements ActionListener {
 
         panel.setSize(420, 420);
         panel.add(mainLabel);
-
         panel.setLayout(null);
 
-        // frame.setTitle("Library System");
         // end
         frame.add(panel);
         frame.pack();
@@ -55,7 +53,6 @@ public class GUI implements ActionListener {
         frame.setVisible(true);
     }
 
-    // button manager
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == adminButton) {

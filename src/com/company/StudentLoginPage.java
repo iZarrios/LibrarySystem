@@ -73,8 +73,6 @@ public class StudentLoginPage implements ActionListener {
                 messageLabel.setForeground(Color.green);
                 System.out.println("I am clicked !!");
                 messageLabel.setText("Login successful");
-//                frame.dispose();
-//                new AdminSection();
             } else {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("Login failed");
