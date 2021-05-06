@@ -9,7 +9,7 @@ public class ViewLibrarian  {
     private JTable table;
 
     ViewLibrarian() {
-        ArrayList<String> data = new ArrayList<String>();
+        ArrayList<String> data;
         UserData auth = new UserData(".\\src\\com\\company\\db.txt");
         data = auth.getData();
         int size = data.size();

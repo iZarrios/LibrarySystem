@@ -46,11 +46,11 @@ public class LibrarianSection implements ActionListener {
 
         returnBookButton = new JButton(" returnBook");
         returnBookButton.addActionListener(this);
-        returnBookButton.setBounds(150, 370, 120, 50);
+        returnBookButton.setBounds(140, 350, 140, 50);
 
         logOutButton = new JButton(" Log Out");
         logOutButton.addActionListener(this);
-        logOutButton.setBounds(150, 430, 120, 50);
+        logOutButton.setBounds(150, 440, 120, 50);
 
         // Panel
         librarianPanel = new JPanel();

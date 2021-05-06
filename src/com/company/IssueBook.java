@@ -3,6 +3,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static com.company.UserData.isStringOnlyAlphabet;
+import static com.company.UserData.isValidEMail;
+
 public class IssueBook implements ActionListener {
 
     private final JFrame issueBookFrame;
@@ -23,6 +28,9 @@ public class IssueBook implements ActionListener {
     private final JTextField studentNameField;
     private final JTextField studentContactField;
     private final JTextField issueDateField;
+    public static void main(String[] args) {
+        new IssueBook();
+    }
     IssueBook(){
         //Creating Frame
         issueBookFrame=new JFrame();
@@ -34,7 +42,7 @@ public class IssueBook implements ActionListener {
 //        idLabel.setBounds(100,60,100,50);
 
 
-        bookCallingLabel=new JLabel("Call Number: ");
+        bookCallingLabel=new JLabel("Calling Number: ");
         bookCallingLabel.setBounds(100,60,100,50);
 
         studentIDLabel=new JLabel("Student ID: ");
@@ -120,9 +128,30 @@ public class IssueBook implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == issueBookButton)
         {
-            System.out.println("I am clicked");
-            JOptionPane.showMessageDialog(null, "Book has been issued Successfully!");
-//            addBooksFrame.dispose();
+            String callingNumber = bookCallingField.getText();
+            String ID = studentIDField.getText();
+            String name = studentNameField.getText();
+            String contact = studentContactField.getText();
+            String date = issueDateField.getText();
+            UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
+            ArrayList<String> data = userData.getData();
+            String book;
+            if (checkNumeric.isNumeric(callingNumber) && checkNumeric.isNumeric(ID) && isStringOnlyAlphabet(name) == true&& isValidEMail(contact) == true && checkDate.isValidDate(date)) {
+                book = callingNumber + "," + ID + "," + name + "," + contact + "," + date;
+                System.out.println(book);
+                userData.addUser(data,book);
+                System.out.println(data);
+                userData.saveData();
+                data = userData.getData();
+                JOptionPane.showMessageDialog(null, "Book has been issued Successfully!");
+                bookCallingField.setText("");
+                studentIDField.setText("");
+                studentNameField.setText("");
+                studentContactField.setText("");
+                issueDateField.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Check Credentials!!");
+            }
         }
         if(e.getSource() == backButton)
         {

@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class LibrarianLogin implements ActionListener {
+    private final String USERNAME = "admin", PASSWORD = "admin";// the admin account credentials
 
     JFrame frame = new JFrame();
     JButton loginButton = new JButton("Login");
@@ -62,12 +63,20 @@ public class LibrarianLogin implements ActionListener {
             userPasswordField.setText("");
         } // done
         if (e.getSource() == loginButton) {
-            messageLabel.setForeground(Color.green);
-            messageLabel.setText("Login successful");
-            frame.dispose();
-            new LibrarianSection();
+            String userID = userIDField.getText();
+            String password = String.valueOf(userPasswordField.getPassword());
+            if(userID.equals(USERNAME)&& password.equals(PASSWORD)){
+                messageLabel.setForeground(Color.green);
+                messageLabel.setText("Login successful");
+                frame.dispose();
+                new LibrarianSection();
+            }
+            else {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Login failed");
+            }
+
         }
 
     }
-
 }

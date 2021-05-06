@@ -3,6 +3,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static com.company.UserData.isStringOnlyAlphabet;
+
 public class AddBooks implements ActionListener {
 
     private final JFrame addBooksFrame;
@@ -23,6 +27,11 @@ public class AddBooks implements ActionListener {
     private final JTextField authorTextField;
     private final JTextField publisherTextField;
     private final JTextField quantityTextField;
+
+    public static void main(String[] args) {
+        new AddBooks();
+    }
+
 
     AddBooks(){
         //Creating Frame
@@ -110,11 +119,31 @@ public class AddBooks implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == addBooksButton)
-        {
-            System.out.println("I am clicked");
-            JOptionPane.showMessageDialog(null, "Book has been added Successfully!");
-//            addBooksFrame.dispose();
+        if(e.getSource() == addBooksButton) {
+            String callNumber = callNumberTextField.getText();
+            String name = nameField.getText();
+            String author = authorTextField.getText();
+            String publisher = publisherTextField.getText();
+            String quantity = quantityTextField.getText();
+            UserData userData = new UserData(".\\src\\com\\company\\books.txt");
+            ArrayList<String> data = userData.getData();
+            String book;
+            if (checkNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) == true && isStringOnlyAlphabet(author) == true&& isStringOnlyAlphabet(publisher) == true && checkNumeric.isNumeric(quantity)) {
+                book = callNumber + "," + name + "," + author + "," + publisher + "," + quantity;
+                System.out.println(book);
+                userData.addUser(data,book);
+                System.out.println(data);
+                userData.saveData();
+//                data = userData.getData();
+                JOptionPane.showMessageDialog(null, "Book has been added Successfully!");
+                callNumberTextField.setText("");
+                nameField.setText("");
+                authorTextField.setText("");
+                publisherTextField.setText("");
+                quantityTextField.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Check Credentials!!");
+            }
         }
         if(e.getSource() == backButton)
         {

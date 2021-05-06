@@ -2,8 +2,8 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 
 public class ViewBooks{
 
@@ -19,10 +19,21 @@ public class ViewBooks{
         viewBooksPanel = new JPanel();
 
         // Table
-        String[] columnsNames = { "Call No", "Name", "Author", "Publisher", "Quantity" };
-        String[][] data = { { "One", "Book1", "shakespeare", "Zeyad", "2" },
-                { "Two", "Book2", "Charles", "Eyad", "5" } };
-        viewBooksTable = new JTable(data, columnsNames);
+        ArrayList<String> data = new ArrayList<String>();
+        UserData userData = new UserData(".\\src\\com\\company\\books.txt");
+        data = userData.getData();
+        int size = data.size();
+        System.out.println(size);
+        String[][] c = new String[size][5];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < 5; j++) {
+                String[] s = data.get(i).split(",");
+                c[i][j] = s[j];
+            }
+        }
+        String[] columnsNames = {"Call No", "Name", "Author", "Publisher", "Quantity"};
+
+        viewBooksTable = new JTable(c,columnsNames);
         // viewBooksTable.setPreferredScrollableViewportSize(new Dimension(500,100));
         viewBooksTable.setFillsViewportHeight(true);
         viewBooksTable.setBounds(0, 0, 500, 500);
@@ -40,6 +51,8 @@ public class ViewBooks{
         viewBooksFrame.pack();
         viewBooksFrame.setSize(500, 500);
         viewBooksFrame.setVisible(true);
+
     }
 }
+
 
