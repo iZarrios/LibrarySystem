@@ -1,10 +1,10 @@
 package com.company;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.util.ArrayList;
 
-
-public class ViewStudents  {
+public class ViewStudents {
     private JFrame frame = new JFrame();;
     private JTable table;
 
@@ -16,22 +16,28 @@ public class ViewStudents  {
         System.out.println(size);
         String[][] c = new String[size][7];
         for (int i = 0; i < size; i++) {
-            int z=0;
+            int z = 0;
             for (int j = 0; j < 8; j++) {
-                if(j==2) continue;
-                String  [] s = data.get(i).split(",");
+                if (j == 2)
+                    continue;
+                String[] s = data.get(i).split(",");
                 c[i][z] = s[j];
                 z++;
             }
-            String[] columnKeys = {"ID", "Name", "Email", "Address", "City", "Contact Info","Quantity"};
+            String[] columnKeys = { "ID", "Name", "Email", "Address", "City", "Contact Info", "Quantity" };
             table = new JTable(c, columnKeys);
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+            for (int j = 0; j < 8; j++) {
+                table.getColumnModel().getColumn(j).setCellRenderer(centerRenderer);
+            }
             table.setBounds(0, 0, 200, 300);
             table.setEnabled(false);
             JScrollPane sp = new JScrollPane(table);
             frame.add(sp);
             // end
             table.setEnabled(false);
-            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setSize(820, 420);
             frame.setVisible(true);
         }

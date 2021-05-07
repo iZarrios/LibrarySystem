@@ -3,24 +3,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static com.company.UserData.isStringOnlyAlphabet;
 
 public class AddBooks implements ActionListener {
 
     private final JFrame addBooksFrame;
-    private final JPanel addBooksPanel;
 
     private final JButton addBooksButton;
     private final JButton backButton;
-
-    private final JLabel addBooksLabel;
-    private final JLabel callNumberLabel;
-    private final JLabel nameLabel;
-    private final JLabel authorLabel;
-    private final JLabel publisherLabel;
-    private final JLabel quantityLabel;
 
     private final JTextField callNumberTextField;
     private final JTextField nameField;
@@ -28,32 +23,31 @@ public class AddBooks implements ActionListener {
     private final JTextField publisherTextField;
     private final JTextField quantityTextField;
 
+
     public static void main(String[] args) {
         new AddBooks();
     }
-
-
     AddBooks(){
         //Creating Frame
         addBooksFrame=new JFrame();
         //Labels
-        addBooksLabel=new JLabel("Add Books");
+        JLabel addBooksLabel = new JLabel("Add Books");
         addBooksLabel.setBounds(200,10,100,50);
 
-        callNumberLabel=new JLabel("Call Number: ");
+        JLabel callNumberLabel = new JLabel("Call Number: ");
         callNumberLabel.setBounds(100,60,100,50);
 
 
-        nameLabel=new JLabel("Name: ");
+        JLabel nameLabel = new JLabel("Name: ");
         nameLabel.setBounds(100,110,100,50);
 
-        authorLabel=new JLabel("Author: ");
+        JLabel authorLabel = new JLabel("Author: ");
         authorLabel.setBounds(100,160,100,50);
 
-        publisherLabel=new JLabel("Publisher: ");
+        JLabel publisherLabel = new JLabel("Publisher: ");
         publisherLabel.setBounds(100,210,100,50);
 
-        quantityLabel=new JLabel("Quantity:");
+        JLabel quantityLabel = new JLabel("Quantity:");
         quantityLabel.setBounds(100,260,100,50);
 
         //Text fields
@@ -73,7 +67,7 @@ public class AddBooks implements ActionListener {
         quantityTextField.setBounds(180,270,100,30);
 
         //Buttons
-        addBooksButton =new JButton(" addBooks");
+        addBooksButton =new JButton(" Add Books");
         addBooksButton.setBounds(180,350,100,30);
         addBooksButton.addActionListener(this);
         backButton =new JButton("Back");
@@ -81,9 +75,7 @@ public class AddBooks implements ActionListener {
         backButton.setBounds(180,400,100,30);
 
         //Panel
-        addBooksPanel =new JPanel();
-        //addBooksPanel.setBorder(BorderFactory.createEmptyBorder(300,30,10,30));
-        //addBooksPanel.setLayout(new GridLayout(7,2));
+        JPanel addBooksPanel = new JPanel();
 
         //Add to Frame
         addBooksFrame.add(addBooksLabel);
@@ -126,15 +118,20 @@ public class AddBooks implements ActionListener {
             String publisher = publisherTextField.getText();
             String quantity = quantityTextField.getText();
             UserData userData = new UserData(".\\src\\com\\company\\books.txt");
-            ArrayList<String> data = userData.getData();
+            ArrayList data = userData.getData();
             String book;
-            if (CheckNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) == true && isStringOnlyAlphabet(author) == true&& isStringOnlyAlphabet(publisher) == true && CheckNumeric.isNumeric(quantity)) {
-                book = callNumber + "," + name + "," + author + "," + publisher + "," + quantity;
+            String todayDate;
+            DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            Calendar obj = Calendar.getInstance();
+            todayDate = format.format(obj.getTime());
+            System.out.println(todayDate);
+            if (CheckNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) && isStringOnlyAlphabet(author) &&
+                    isStringOnlyAlphabet(publisher) && CheckNumeric.isNumeric(quantity)) {
+                book = callNumber + "," + name + "," + author + "," + publisher + "," + quantity + "," + todayDate;
                 System.out.println(book);
                 userData.addUser(data,book);
                 System.out.println(data);
                 userData.saveData();
-//                data = userData.getData();
                 JOptionPane.showMessageDialog(null, "Book has been added Successfully!");
                 callNumberTextField.setText("");
                 nameField.setText("");
@@ -148,7 +145,6 @@ public class AddBooks implements ActionListener {
         if(e.getSource() == backButton)
         {
 
-            System.out.println("I am clicked");
             addBooksFrame.dispose();
             new LibrarianSection();
         }

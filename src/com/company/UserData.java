@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserData {
-    private ArrayList<String> data = new ArrayList<String>();
-    private String path = "";
+    private ArrayList<String> data = new ArrayList<>();
+    private String path;
 
     public void setData(ArrayList<String> data) {
         this.data = data;
@@ -49,12 +49,12 @@ public class UserData {
         }
         return data;
     }
+
     public void saveData() {
         try {
-            //System.out.println(data);
             PrintWriter out = new PrintWriter(path);
-            for (int i = 0; i < data.size(); i++) {
-                out.println(String.valueOf(data.get(i)));
+            for (String datum : data) {
+                out.println(String.valueOf(datum));
             }
             out.close();
             System.out.println("Successfully wrote to the file.");
@@ -63,15 +63,16 @@ public class UserData {
         }
     }
 
-    public static boolean isStringOnlyAlphabet(String str)
-    {
-        return ((str != null) //if string not null nor empty and is matches that regex expression
+    public static boolean isStringOnlyAlphabet(String str) {
+        return ((str != null) // if string not null nor empty and is matches that regex expression
                 && (!str.equals(""))// returns 1 on success
-                && (str.matches("^[a-zA-Z]*$")));
-    } //src : https://www.geeksforgeeks.org/check-if-a-string-contains-only-alphabets-in-java-using-regex/
-    public static boolean isValidEMail(String email){
+                && (str.matches("^[a-zA-Z ]*$")));
+    } // src :
+      // https://www.geeksforgeeks.org/check-if-a-string-contains-only-alphabets-in-java-using-regex/
+
+    public static boolean isValidEMail(String email) {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        return email.matches(regex);//returns 1 on success
-    } //src : https://www.tutorialspoint.com/validate-email-address-in-java
+        return email.matches(regex);// returns 1 on success
+    } // src : https://www.tutorialspoint.com/validate-email-address-in-java
 
 }

@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class AdminSection implements ActionListener {
 
-    private JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame();
     private final JButton addLibrarian = new JButton("Add Librarian");
     private final JButton viewLibrarian = new JButton("View Librarians");
     private final JButton deleteLibrarian = new JButton("Delete Librarian");
@@ -58,27 +58,22 @@ public class AdminSection implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addLibrarian) {
             new AddLibrarian();
-            System.out.println("I am clicked");
             frame.dispose();
         }
         if (e.getSource() == viewLibrarian) {
             new ViewLibrarian();
-            System.out.println("I am clicked");
             // frame.dispose();
         }
         if (e.getSource() == deleteLibrarian) {
             new DeleteLibrarian();
-            System.out.println("I am clicked");
             frame.dispose();
         }
         if (e.getSource() == addStudent) {
             new AddStudent();
-            System.out.println("I am clicked");
             frame.dispose();
         }
         if (e.getSource() == logOut) {
             new GUI();
-            System.out.println("I am clicked");
             frame.dispose();
         }
     }

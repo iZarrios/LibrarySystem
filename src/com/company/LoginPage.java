@@ -6,26 +6,25 @@ import javax.swing.*;
 
 public class LoginPage implements ActionListener {
 
-    private final String USERNAME = "admin", PASSWORD = "admin";// the admin account credentials
-    private JFrame frame = new JFrame(); // we can add more admins by making a class where it returns an array or a
+    private final JFrame frame = new JFrame(); // we can add more admins by making a class where it returns an array or a
                                          // hashmap but as it is not needed here :)
                                          // making an internal array (hard coded)
-    private JButton loginButton = new JButton("Login");
-    private JButton resetButton = new JButton("Reset");
-    private JTextField userIDField = new JTextField();
-    private JPasswordField userPasswordField = new JPasswordField();
-    private JLabel userIDLabel = new JLabel("Enter Name:");
-    private JLabel userPasswordLabel = new JLabel("Enter Password:");
-    private JLabel messageLabel = new JLabel();
-    private JLabel adminLoginForm = new JLabel("Admin Login Form");
+    private final JButton loginButton = new JButton("Login");
+    private final JButton resetButton = new JButton("Reset");
+    private final JTextField userIDField = new JTextField();
+    private final JPasswordField userPasswordField = new JPasswordField();
+    private final JLabel messageLabel = new JLabel();
 
     LoginPage() {
 
         frame.setResizable(false);
+        JLabel adminLoginForm = new JLabel("Admin Login Form");
         adminLoginForm.setBounds(100, 10, 220, 50);
         adminLoginForm.setFont(new Font(null, Font.ITALIC, 20));
 
+        JLabel userIDLabel = new JLabel("Enter Name:");
         userIDLabel.setBounds(50, 100, 75, 25);
+        JLabel userPasswordLabel = new JLabel("Enter Password:");
         userPasswordLabel.setBounds(20, 150, 115, 25);
 
         messageLabel.setBounds(125, 250, 250, 35);
@@ -70,6 +69,9 @@ public class LoginPage implements ActionListener {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
+            // the admin account credentials
+            String PASSWORD = "admin";
+            String USERNAME = "admin";
             if (userID.equals(USERNAME) && password.equals(PASSWORD)) {
                 messageLabel.setForeground(Color.green);
                 messageLabel.setText("Login successful");

@@ -6,15 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class DeleteLibrarian implements ActionListener {
-    private JFrame frame;
-    private JButton deleteButton = new JButton("Delete");
-    private JLabel userIDLabel = new JLabel("Enter ID:");
-    private JTextField userIDField = new JTextField();
-    private JButton backButton = new JButton("Back");
+    private final JFrame frame;
+    private final JButton deleteButton = new JButton("Delete");
+    private final JLabel userIDLabel = new JLabel("Enter ID:");
+    private final JTextField userIDField = new JTextField();
+    private final JButton backButton = new JButton("Back");
 
-    public static void main(String[] args) {
-        new DeleteLibrarian();
-    }
 
     DeleteLibrarian() {
         frame = new JFrame();

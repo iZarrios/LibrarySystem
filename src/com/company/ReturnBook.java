@@ -8,33 +8,24 @@ import java.awt.event.ActionListener;
 public class ReturnBook implements ActionListener {
 
     private final JFrame returnBookFrame;
-    private final JPanel returnBookPanel;
 
     private final JButton returnBookButton;
     private final JButton backButton;
 
-    private final JLabel returnBookLabel;
-    private final JLabel bookCallingLabel;
-    private final JLabel studentIDLabel;
-
     private final JTextField bookCallingField;
     private final JTextField studentIDField;
-
-    public static void main(String[] args) {
-        new ReturnBook();
-    }
 
     ReturnBook() {
         // Creating Frame
         returnBookFrame = new JFrame();
         // Labels
-        returnBookLabel = new JLabel("Return Books");
+        JLabel returnBookLabel = new JLabel("Return Books");
         returnBookLabel.setBounds(200, 10, 100, 50);
 
-        bookCallingLabel = new JLabel("Book Calling: ");
+        JLabel bookCallingLabel = new JLabel("Book Calling: ");
         bookCallingLabel.setBounds(100, 60, 100, 50);
 
-        studentIDLabel = new JLabel("Student ID: ");
+        JLabel studentIDLabel = new JLabel("Student ID: ");
         studentIDLabel.setBounds(100, 110, 100, 50);
 
         // Text fields
@@ -53,7 +44,7 @@ public class ReturnBook implements ActionListener {
         backButton.setBounds(180, 250, 100, 30);
 
         // Panel
-        returnBookPanel = new JPanel();
+        JPanel returnBookPanel = new JPanel();
 
         // Add to Frame
         returnBookFrame.add(returnBookLabel);
@@ -82,21 +73,18 @@ public class ReturnBook implements ActionListener {
         if (e.getSource() == returnBookButton) {
             String bookCalling = bookCallingField.getText();
             String ID = studentIDField.getText();
-            ReturnValidity v =new ReturnValidity(Integer.parseInt(bookCalling),Integer.parseInt(ID));
-            if(v.canReturn()==1){
+            ReturnValidity v = new ReturnValidity(Integer.parseInt(bookCalling), Integer.parseInt(ID));
+            if (v.canReturn() == 1) {
                 v.decQuantityIncBooksRemoveIssued();
-                System.out.println("I am clicked");
                 JOptionPane.showMessageDialog(null, "Book has been returned Successfully!");
                 bookCallingField.setText("");
                 studentIDField.setText("");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Check your Data!!");
             }
         }
         if (e.getSource() == backButton) {
 
-            System.out.println("I am clicked");
             returnBookFrame.dispose();
             new LibrarianSection();
         }

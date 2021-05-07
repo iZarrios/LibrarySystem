@@ -79,8 +79,6 @@ public class LibrarianLogin implements ActionListener {
                     c1[i][j] = s1[j];
                 }
                 if(c1[i][0].equals(userID) && c1[i][2].equals(password)){
-                    System.out.println("I am clicked !!");
-//                    JOptionPane.showMessageDialog(null,"Moving to view students");
                     frame.dispose();
                     new LibrarianSection();
                     break;

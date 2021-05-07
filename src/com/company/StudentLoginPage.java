@@ -7,25 +7,27 @@ import javax.swing.*;
 
 public class StudentLoginPage implements ActionListener {
 
-    //private final String USERNAME = "", PASSWORD = "";// the admin account credentials
-    private JFrame frame = new JFrame(); // we can add more users by making a class where it returns an array or a
-                                         // hashmap but as it is not needed here :)
-    private JButton loginButton = new JButton("Login");
-    private JButton resetButton = new JButton("Reset");
-    private JTextField userIDField = new JTextField();
-    private JPasswordField userPasswordField = new JPasswordField();
-    private JLabel userIDLabel = new JLabel("Enter ID:");
-    private JLabel userPasswordLabel = new JLabel("Enter Password:");
-    private JLabel messageLabel = new JLabel();
-    private JLabel adminLoginForm = new JLabel("Student Login Form");
+    // hashmap but as it is not needed here :)
+    private final JButton loginButton = new JButton("Login");
+    private final JButton resetButton = new JButton("Reset");
+    private final JTextField userIDField = new JTextField();
+    private final JPasswordField userPasswordField = new JPasswordField();
+    private final JLabel messageLabel = new JLabel();
 
     StudentLoginPage() {
 
+        // private final String USERNAME = "", PASSWORD = "";// the admin account
+        // credentials
+        // we can add more users by making a class where it returns an array or a
+        JFrame frame = new JFrame();
         frame.setResizable(false);
+        JLabel adminLoginForm = new JLabel("Student Login Form");
         adminLoginForm.setBounds(100, 10, 220, 50);
         adminLoginForm.setFont(new Font(null, Font.ITALIC, 20));
 
+        JLabel userIDLabel = new JLabel("Enter ID:");
         userIDLabel.setBounds(50, 100, 75, 25);
+        JLabel userPasswordLabel = new JLabel("Enter Password:");
         userPasswordLabel.setBounds(20, 150, 115, 25);
 
         messageLabel.setBounds(125, 250, 250, 35);
@@ -80,17 +82,13 @@ public class StudentLoginPage implements ActionListener {
                     String[] s1 = dataStudent.get(i).split(",");
                     c1[i][j] = s1[j];
                 }
-                if(c1[i][0].equals(userID) && c1[i][2].equals(password)){
-                    System.out.println("I am clicked !!");
-                    JOptionPane.showMessageDialog(null,"Moving to view students");
-                    frame.dispose();
+                if (c1[i][0].equals(userID) && c1[i][2].equals(password)) {
+                    // frame.dispose();
                     new ViewStudents();
                     break;
-                }
-                else {
+                } else {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText("Login failed");
-                    //userIDField.setText("");
                     userPasswordField.setText("");
                 }
             }
@@ -100,6 +98,3 @@ public class StudentLoginPage implements ActionListener {
     }
 
 }
-
-
-

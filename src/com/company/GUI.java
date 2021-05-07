@@ -60,12 +60,10 @@ public class GUI implements ActionListener {
             new LoginPage();
         }
         if (e.getSource() == librarianButton) {
-            System.out.println("I am clicked");
             new LibrarianLogin();
             frame.dispose();
         }
         if (e.getSource() == studentButton) {
-            System.out.println("I am clicked");
             new StudentLoginPage();
             frame.dispose();
         }

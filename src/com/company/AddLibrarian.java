@@ -11,39 +11,33 @@ import static com.company.UserData.isValidEMail;
 
 public class AddLibrarian implements ActionListener {
 
-    private JFrame frame = new JFrame();
-    private JLabel welcomeLabel;
-    private JLabel librarianName;
-    private JTextField nameField = new JTextField("");
-    private JLabel librarianPassword = new JLabel("Password:");
-    private JPasswordField passwordField = new JPasswordField("");
-    private JLabel librarianEMail = new JLabel("E-Mail:");
-    private JTextField emailField = new JTextField("");
-    private JLabel librarianAddress = new JLabel("Address:");
-    private JTextField addressField = new JTextField("");
-    private JLabel librarianCity = new JLabel("City:");
-    private JTextField cityField = new JTextField("");
-    private JLabel librarianContactInfo = new JLabel("Contact No:");
-    private JTextField contactInfoField = new JTextField("");
-    private JButton addLibrarianButton = new JButton("Add Librarian");
-    private JButton backButton = new JButton("Back");
+    private final JFrame frame = new JFrame();
+    private final JTextField nameField = new JTextField("");
+    private final JPasswordField passwordField = new JPasswordField("");
+    private final JTextField emailField = new JTextField("");
+    private final JTextField addressField = new JTextField("");
+    private final JTextField cityField = new JTextField("");
+    private final JTextField contactInfoField = new JTextField("");
+    private final JButton addLibrarianButton = new JButton("Add Librarian");
+    private final JButton backButton = new JButton("Back");
 
     AddLibrarian() {
         frame.setResizable(false);
         // main label
-        welcomeLabel = new JLabel("Add Librarian");
+        JLabel welcomeLabel = new JLabel("Add Librarian");
         welcomeLabel.setBounds(130, 10, 220, 50);
         welcomeLabel.setFont(new Font(null, Font.ITALIC, 20));
         frame.add(welcomeLabel);
 
         // name
-        librarianName = new JLabel("Name:");
+        JLabel librarianName = new JLabel("Name:");
         librarianName.setBounds(50, 50, 220, 50);
         frame.add(librarianName);
 
         nameField.setBounds(150, 65, 180, 20);
         frame.add(nameField);
         // password
+        JLabel librarianPassword = new JLabel("Password:");
         librarianPassword.setBounds(50, 90, 220, 50);
         frame.add(librarianPassword);
 
@@ -51,6 +45,7 @@ public class AddLibrarian implements ActionListener {
         frame.add(passwordField);
 
         // email
+        JLabel librarianEMail = new JLabel("E-Mail:");
         librarianEMail.setBounds(50, 130, 220, 50);
         frame.add(librarianEMail);
 
@@ -58,6 +53,7 @@ public class AddLibrarian implements ActionListener {
         frame.add(emailField);
 
         // address
+        JLabel librarianAddress = new JLabel("Address:");
         librarianAddress.setBounds(50, 170, 220, 50);
         frame.add(librarianAddress);
 
@@ -65,6 +61,7 @@ public class AddLibrarian implements ActionListener {
         frame.add(addressField);
 
         // city
+        JLabel librarianCity = new JLabel("City:");
         librarianCity.setBounds(50, 210, 220, 50);
         frame.add(librarianCity);
 
@@ -72,6 +69,7 @@ public class AddLibrarian implements ActionListener {
         frame.add(cityField);
 
         // contact info
+        JLabel librarianContactInfo = new JLabel("Contact No:");
         librarianContactInfo.setBounds(50, 250, 220, 50);
         frame.add(librarianContactInfo);
 
@@ -132,7 +130,6 @@ public class AddLibrarian implements ActionListener {
             }
         }
             if (e.getSource() == backButton) {
-                System.out.println("I am clicked");
                 frame.dispose();
                 new AdminSection();
             }
