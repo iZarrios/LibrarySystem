@@ -100,7 +100,7 @@ public class AddLibrarian implements ActionListener {
 
         if (e.getSource() == addLibrarianButton) {
             String name = nameField.getText();
-            char[] temppassword = passwordField.getPassword();//get password returns an array of char
+            char[] temppassword = passwordField.getPassword();// get password returns an array of char
             String password = new String(temppassword);
             String email = emailField.getText();
             String address = addressField.getText();
@@ -109,8 +109,8 @@ public class AddLibrarian implements ActionListener {
             String user;
             UserData auth = new UserData(".\\src\\com\\company\\db.txt");
             ArrayList data = auth.getData();
-            if (isStringOnlyAlphabet(name) && isValidEMail(email) && temppassword.length != 0 &&
-                    isStringOnlyAlphabet(city) && address.isEmpty() && city.isEmpty() && password.isEmpty() ) {
+            if (isStringOnlyAlphabet(name) && isValidEMail(email) && temppassword.length != 0
+                    && isStringOnlyAlphabet(city) && address.isEmpty() && city.isEmpty() && password.isEmpty()) {
                 int count = data.size();
                 user = count + "," + name + "," + password + "," + email + "," + address + "," + city + "," + number;
                 System.out.println(user);
@@ -129,11 +129,10 @@ public class AddLibrarian implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Check Credentials!!");
             }
         }
-            if (e.getSource() == backButton) {
-                frame.dispose();
-                new AdminSection();
-            }
+        if (e.getSource() == backButton) {
+            frame.dispose();
+            new AdminSection();
+        }
 
     }
 }
-

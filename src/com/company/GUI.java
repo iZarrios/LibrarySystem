@@ -13,10 +13,6 @@ public class GUI implements ActionListener {
     private final JButton adminButton = new JButton("Admin Login");
     private final JButton studentButton = new JButton("Student Login");
 
-    public static void main(String[] args) {
-        new GUI();
-    }
-
     public GUI() {
 
         frame.setResizable(false);

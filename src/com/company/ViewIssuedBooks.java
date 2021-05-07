@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class ViewIssuedBooks {
 
-
-
     ViewIssuedBooks() {
         // Creating Frame
         JFrame viewIssuedBooksFrame = new JFrame();

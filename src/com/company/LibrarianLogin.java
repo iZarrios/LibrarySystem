@@ -78,15 +78,14 @@ public class LibrarianLogin implements ActionListener {
                     String[] s1 = dataStudent.get(i).split(",");
                     c1[i][j] = s1[j];
                 }
-                if(c1[i][0].equals(userID) && c1[i][2].equals(password)){
+                if (c1[i][0].equals(userID) && c1[i][2].equals(password)) {
                     frame.dispose();
                     new LibrarianSection();
                     break;
-                }
-                else {
+                } else {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText("Login failed");
-                    //userIDField.setText("");
+                    // userIDField.setText("");
                     userPasswordField.setText("");
                 }
             }

@@ -22,7 +22,6 @@ public class IssueBook implements ActionListener {
     private final JTextField studentContactField;
     private final JTextField issueDateField;
 
-
     IssueBook() {
         // Creating Frame
         issueBookFrame = new JFrame();

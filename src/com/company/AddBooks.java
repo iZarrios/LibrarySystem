@@ -1,4 +1,5 @@
 package com.company;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,61 +24,56 @@ public class AddBooks implements ActionListener {
     private final JTextField publisherTextField;
     private final JTextField quantityTextField;
 
-
-    public static void main(String[] args) {
-        new AddBooks();
-    }
-    AddBooks(){
-        //Creating Frame
-        addBooksFrame=new JFrame();
-        //Labels
+    AddBooks() {
+        // Creating Frame
+        addBooksFrame = new JFrame();
+        // Labels
         JLabel addBooksLabel = new JLabel("Add Books");
-        addBooksLabel.setBounds(200,10,100,50);
+        addBooksLabel.setBounds(200, 10, 100, 50);
 
         JLabel callNumberLabel = new JLabel("Call Number: ");
-        callNumberLabel.setBounds(100,60,100,50);
-
+        callNumberLabel.setBounds(100, 60, 100, 50);
 
         JLabel nameLabel = new JLabel("Name: ");
-        nameLabel.setBounds(100,110,100,50);
+        nameLabel.setBounds(100, 110, 100, 50);
 
         JLabel authorLabel = new JLabel("Author: ");
-        authorLabel.setBounds(100,160,100,50);
+        authorLabel.setBounds(100, 160, 100, 50);
 
         JLabel publisherLabel = new JLabel("Publisher: ");
-        publisherLabel.setBounds(100,210,100,50);
+        publisherLabel.setBounds(100, 210, 100, 50);
 
         JLabel quantityLabel = new JLabel("Quantity:");
-        quantityLabel.setBounds(100,260,100,50);
+        quantityLabel.setBounds(100, 260, 100, 50);
 
-        //Text fields
-        callNumberTextField=new JTextField();
-        callNumberTextField.setBounds(180,70,100,30);
+        // Text fields
+        callNumberTextField = new JTextField();
+        callNumberTextField.setBounds(180, 70, 100, 30);
 
-        nameField=new JTextField();
-        nameField.setBounds(180,120,100,30);
+        nameField = new JTextField();
+        nameField.setBounds(180, 120, 100, 30);
 
-        authorTextField=new JTextField();
-        authorTextField.setBounds(180,170,100,30);
+        authorTextField = new JTextField();
+        authorTextField.setBounds(180, 170, 100, 30);
 
-        publisherTextField=new JTextField();
-        publisherTextField.setBounds(180,220,100,30);
+        publisherTextField = new JTextField();
+        publisherTextField.setBounds(180, 220, 100, 30);
 
-        quantityTextField=new JTextField();
-        quantityTextField.setBounds(180,270,100,30);
+        quantityTextField = new JTextField();
+        quantityTextField.setBounds(180, 270, 100, 30);
 
-        //Buttons
-        addBooksButton =new JButton(" Add Books");
-        addBooksButton.setBounds(180,350,100,30);
+        // Buttons
+        addBooksButton = new JButton(" Add Books");
+        addBooksButton.setBounds(180, 350, 100, 30);
         addBooksButton.addActionListener(this);
-        backButton =new JButton("Back");
+        backButton = new JButton("Back");
         backButton.addActionListener(this);
-        backButton.setBounds(180,400,100,30);
+        backButton.setBounds(180, 400, 100, 30);
 
-        //Panel
+        // Panel
         JPanel addBooksPanel = new JPanel();
 
-        //Add to Frame
+        // Add to Frame
         addBooksFrame.add(addBooksLabel);
 
         addBooksFrame.add(callNumberLabel);
@@ -98,9 +94,9 @@ public class AddBooks implements ActionListener {
         addBooksFrame.add(addBooksButton);
         addBooksFrame.add(backButton);
 
-        //Frame
-        addBooksFrame.add(addBooksPanel,BorderLayout.CENTER);
-        //addBooksFrame.add(addBooksPanel);
+        // Frame
+        addBooksFrame.add(addBooksPanel, BorderLayout.CENTER);
+        // addBooksFrame.add(addBooksPanel);
         addBooksFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addBooksFrame.setTitle("University Library System");
         addBooksFrame.pack();
@@ -111,7 +107,7 @@ public class AddBooks implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == addBooksButton) {
+        if (e.getSource() == addBooksButton) {
             String callNumber = callNumberTextField.getText();
             String name = nameField.getText();
             String author = authorTextField.getText();
@@ -125,11 +121,11 @@ public class AddBooks implements ActionListener {
             Calendar obj = Calendar.getInstance();
             todayDate = format.format(obj.getTime());
             System.out.println(todayDate);
-            if (CheckNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) && isStringOnlyAlphabet(author) &&
-                    isStringOnlyAlphabet(publisher) && CheckNumeric.isNumeric(quantity)) {
+            if (CheckNumeric.isNumeric(callNumber) && isStringOnlyAlphabet(name) && isStringOnlyAlphabet(author)
+                    && isStringOnlyAlphabet(publisher) && CheckNumeric.isNumeric(quantity)) {
                 book = callNumber + "," + name + "," + author + "," + publisher + "," + quantity + "," + todayDate;
                 System.out.println(book);
-                userData.addUser(data,book);
+                userData.addUser(data, book);
                 System.out.println(data);
                 userData.saveData();
                 JOptionPane.showMessageDialog(null, "Book has been added Successfully!");
@@ -142,8 +138,7 @@ public class AddBooks implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Check Credentials!!");
             }
         }
-        if(e.getSource() == backButton)
-        {
+        if (e.getSource() == backButton) {
 
             addBooksFrame.dispose();
             new LibrarianSection();

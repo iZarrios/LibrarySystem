@@ -12,7 +12,6 @@ public class DeleteLibrarian implements ActionListener {
     private final JTextField userIDField = new JTextField();
     private final JButton backButton = new JButton("Back");
 
-
     DeleteLibrarian() {
         frame = new JFrame();
         userIDLabel.setBounds(50, 100, 75, 25);
@@ -44,7 +43,7 @@ public class DeleteLibrarian implements ActionListener {
         UserData auth = new UserData(".\\src\\com\\company\\db.txt");
         data = auth.getData();
         int size = data.size();
-        int flag  = 0;
+        int flag = 0;
         String[][] c = new String[size][7];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 7; j++) {
@@ -66,12 +65,12 @@ public class DeleteLibrarian implements ActionListener {
 
                 }
             }
-                if(flag == 0)
-                    JOptionPane.showMessageDialog(null, "ID not found!");
-                if(flag == 1) {
-                    auth.saveData();
-                    data = auth.getData();
-                }
+            if (flag == 0)
+                JOptionPane.showMessageDialog(null, "ID not found!");
+            if (flag == 1) {
+                auth.saveData();
+                data = auth.getData();
+            }
         }
         if (e.getSource() == backButton) {
             new AdminSection();

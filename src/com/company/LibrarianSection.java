@@ -88,7 +88,7 @@ public class LibrarianSection implements ActionListener {
         }
         if (e.getSource() == viewIssuedBooksButton) {
 
-            //librarianFrame.dispose();
+            // librarianFrame.dispose();
             new ViewIssuedBooks();
         }
         if (e.getSource() == returnBookButton) {

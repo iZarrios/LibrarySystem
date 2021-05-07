@@ -6,9 +6,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ViewBooks {
-    public static void main(String[] args) {
-        new ViewBooks();
-    }
 
     ViewBooks() {
         // Creating Frame

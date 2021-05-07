@@ -6,9 +6,10 @@ import javax.swing.*;
 
 public class LoginPage implements ActionListener {
 
-    private final JFrame frame = new JFrame(); // we can add more admins by making a class where it returns an array or a
-                                         // hashmap but as it is not needed here :)
-                                         // making an internal array (hard coded)
+    private final JFrame frame = new JFrame(); // we can add more admins by making a class where it returns an array or
+                                               // a
+    // hashmap but as it is not needed here :)
+    // making an internal array (hard coded)
     private final JButton loginButton = new JButton("Login");
     private final JButton resetButton = new JButton("Reset");
     private final JTextField userIDField = new JTextField();
