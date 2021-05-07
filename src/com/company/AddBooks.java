@@ -128,7 +128,7 @@ public class AddBooks implements ActionListener {
             UserData userData = new UserData(".\\src\\com\\company\\books.txt");
             ArrayList<String> data = userData.getData();
             String book;
-            if (checkNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) == true && isStringOnlyAlphabet(author) == true&& isStringOnlyAlphabet(publisher) == true && checkNumeric.isNumeric(quantity)) {
+            if (CheckNumeric.isNumeric(callNumber) &&isStringOnlyAlphabet(name) == true && isStringOnlyAlphabet(author) == true&& isStringOnlyAlphabet(publisher) == true && CheckNumeric.isNumeric(quantity)) {
                 book = callNumber + "," + name + "," + author + "," + publisher + "," + quantity;
                 System.out.println(book);
                 userData.addUser(data,book);

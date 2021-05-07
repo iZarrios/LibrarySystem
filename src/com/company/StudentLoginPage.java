@@ -2,18 +2,19 @@ package com.company;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class StudentLoginPage implements ActionListener {
 
-    private final String USERNAME = "", PASSWORD = "";// the admin account credentials
+    //private final String USERNAME = "", PASSWORD = "";// the admin account credentials
     private JFrame frame = new JFrame(); // we can add more users by making a class where it returns an array or a
                                          // hashmap but as it is not needed here :)
     private JButton loginButton = new JButton("Login");
     private JButton resetButton = new JButton("Reset");
     private JTextField userIDField = new JTextField();
     private JPasswordField userPasswordField = new JPasswordField();
-    private JLabel userIDLabel = new JLabel("Enter Name:");
+    private JLabel userIDLabel = new JLabel("Enter ID:");
     private JLabel userPasswordLabel = new JLabel("Enter Password:");
     private JLabel messageLabel = new JLabel();
     private JLabel adminLoginForm = new JLabel("Student Login Form");
@@ -65,20 +66,40 @@ public class StudentLoginPage implements ActionListener {
             userPasswordField.setText("");
         } // done
         if (e.getSource() == loginButton) {
-
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
-            if (userID.equals(USERNAME) && password.equals(PASSWORD)) {
-                messageLabel.setForeground(Color.green);
-                System.out.println("I am clicked !!");
-                messageLabel.setText("Login successful");
-            } else {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Login failed");
+            ArrayList<String> dataStudent;
+            UserData studentData = new UserData(".\\src\\com\\company\\StudentDB.txt");
+            dataStudent = studentData.getData();
+            int size = dataStudent.size();
+            System.out.println(size);
+            String[][] c1 = new String[size][8];
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < 8; j++) {
+                    String[] s1 = dataStudent.get(i).split(",");
+                    c1[i][j] = s1[j];
+                }
+                if(c1[i][0].equals(userID) && c1[i][2].equals(password)){
+                    System.out.println("I am clicked !!");
+                    JOptionPane.showMessageDialog(null,"Moving to view students");
+                    frame.dispose();
+                    new ViewStudents();
+                    break;
+                }
+                else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("Login failed");
+                    //userIDField.setText("");
+                    userPasswordField.setText("");
+                }
             }
+
         }
 
     }
 
 }
+
+
+

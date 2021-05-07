@@ -10,6 +10,9 @@ public class ViewBooks{
     private final JFrame viewBooksFrame;
     private final JPanel viewBooksPanel;
     private final JTable viewBooksTable;
+    public static void main(String[] args) {
+        new ViewBooks();
+    }
 
     ViewBooks() {
         // Creating Frame

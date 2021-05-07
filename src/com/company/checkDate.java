@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-public class checkDate {
+public class CheckDate {
 
     public static boolean isValidDate(final String date) {
 

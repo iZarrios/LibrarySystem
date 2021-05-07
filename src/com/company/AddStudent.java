@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.*;
 
 import static com.company.UserData.isStringOnlyAlphabet;
@@ -102,6 +103,7 @@ public class AddStudent implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         UserData auth = new UserData(".\\src\\com\\company\\StudentDB.txt");
         ArrayList<String> data = auth.getData();
+        Random rand = new Random();
         if(e.getSource() == addStudentButton)
         {
             String name = nameField.getText();
@@ -114,9 +116,10 @@ public class AddStudent implements ActionListener {
             String user;
             if(isStringOnlyAlphabet(name) == true && isValidEMail(email) == true && temppass.length != 0)
             {
+                int resRandom1 = rand.nextInt((9999 - 100) + 1) + 10;
+                int booksIssued = 0;
                 int count = data.size();
-                user = count + "," +name + "," + password+ "," + email + "," + address + "," + city + "," + number;
-                System.out.println(user);
+                user = resRandom1 + "," +name + "," + password+ "," + email + "," + address + "," + city + "," + number + "," + booksIssued;
                 auth.addUser(data,user);
                 System.out.println(data);
                 auth.saveData();

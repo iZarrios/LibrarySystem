@@ -1,6 +1,6 @@
 package com.company;
 
-public class checkNumeric {
+public class CheckNumeric {
     public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);

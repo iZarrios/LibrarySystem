@@ -20,6 +20,10 @@ public class ReturnBook implements ActionListener {
     private final JTextField bookCallingField;
     private final JTextField studentIDField;
 
+    public static void main(String[] args) {
+        new ReturnBook();
+    }
+
     ReturnBook() {
         // Creating Frame
         returnBookFrame = new JFrame();
@@ -76,9 +80,19 @@ public class ReturnBook implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == returnBookButton) {
-            System.out.println("I am clicked");
-            JOptionPane.showMessageDialog(null, "Book has been returned Successfully!");
-            // addBooksFrame.dispose();
+            String bookCalling = bookCallingField.getText();
+            String ID = studentIDField.getText();
+            ReturnValidity v =new ReturnValidity(Integer.parseInt(bookCalling),Integer.parseInt(ID));
+            if(v.canReturn()==1){
+                v.decQuantityIncBooksRemoveIssued();
+                System.out.println("I am clicked");
+                JOptionPane.showMessageDialog(null, "Book has been returned Successfully!");
+                bookCallingField.setText("");
+                studentIDField.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Check your Data!!");
+            }
         }
         if (e.getSource() == backButton) {
 

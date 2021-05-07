@@ -51,6 +51,7 @@ public class UserData {
     }
     public void saveData() {
         try {
+            //System.out.println(data);
             PrintWriter out = new PrintWriter(path);
             for (int i = 0; i < data.size(); i++) {
                 out.println(String.valueOf(data.get(i)));

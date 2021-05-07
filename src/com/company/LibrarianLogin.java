@@ -2,6 +2,7 @@ package com.company;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class LibrarianLogin implements ActionListener {
@@ -65,15 +66,31 @@ public class LibrarianLogin implements ActionListener {
         if (e.getSource() == loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
-            if(userID.equals(USERNAME)&& password.equals(PASSWORD)){
-                messageLabel.setForeground(Color.green);
-                messageLabel.setText("Login successful");
-                frame.dispose();
-                new LibrarianSection();
-            }
-            else {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Login failed");
+
+            ArrayList<String> dataStudent;
+            UserData studentData = new UserData(".\\src\\com\\company\\db.txt");
+            dataStudent = studentData.getData();
+            int size = dataStudent.size();
+            System.out.println(size);
+            String[][] c1 = new String[size][8];
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < 7; j++) {
+                    String[] s1 = dataStudent.get(i).split(",");
+                    c1[i][j] = s1[j];
+                }
+                if(c1[i][0].equals(userID) && c1[i][2].equals(password)){
+                    System.out.println("I am clicked !!");
+//                    JOptionPane.showMessageDialog(null,"Moving to view students");
+                    frame.dispose();
+                    new LibrarianSection();
+                    break;
+                }
+                else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("Login failed");
+                    //userIDField.setText("");
+                    userPasswordField.setText("");
+                }
             }
 
         }

@@ -136,19 +136,30 @@ public class IssueBook implements ActionListener {
             UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
             ArrayList<String> data = userData.getData();
             String book;
-            if (checkNumeric.isNumeric(callingNumber) && checkNumeric.isNumeric(ID) && isStringOnlyAlphabet(name) == true&& isValidEMail(contact) == true && checkDate.isValidDate(date)) {
-                book = callingNumber + "," + ID + "," + name + "," + contact + "," + date;
-                System.out.println(book);
-                userData.addUser(data,book);
-                System.out.println(data);
-                userData.saveData();
-                data = userData.getData();
-                JOptionPane.showMessageDialog(null, "Book has been issued Successfully!");
-                bookCallingField.setText("");
-                studentIDField.setText("");
-                studentNameField.setText("");
-                studentContactField.setText("");
-                issueDateField.setText("");
+            if (CheckNumeric.isNumeric(callingNumber) && CheckNumeric.isNumeric(ID) && isStringOnlyAlphabet(name) == true&& isValidEMail(contact) == true && CheckDate.isValidDate(date)) {
+                IssueValidity s =new IssueValidity();
+                if(s.canStudentIssue(Integer.parseInt(ID))==1 && s.canBeIssuedBook(Integer.parseInt(callingNumber))==1){
+                    s.decQuantityIncIssued();
+                    book = callingNumber + "," + ID + "," + name + "," + contact + "," + date;
+                    System.out.println(book);
+                    userData.addUser(data,book);
+                    System.out.println(data);
+                    userData.saveData();
+                    data = userData.getData();
+                    JOptionPane.showMessageDialog(null, "Book has been issued Successfully!");
+                    bookCallingField.setText("");
+                    studentIDField.setText("");
+                    studentNameField.setText("");
+                    studentContactField.setText("");
+                    issueDateField.setText("");
+                }
+                if(s.canStudentIssue(Integer.parseInt(ID))!=1){
+                    JOptionPane.showMessageDialog(null, "Error in Calling student!!");
+                }
+                if(s.canBeIssuedBook(Integer.parseInt(callingNumber))!=1){
+                    JOptionPane.showMessageDialog(null, "Error in Calling Book!!");
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null, "Check Credentials!!");
             }
