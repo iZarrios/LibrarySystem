@@ -75,6 +75,7 @@ public class StudentLoginPage implements ActionListener {
             UserData studentData = new UserData(".\\src\\com\\company\\StudentDB.txt");
             dataStudent = studentData.getData();
             int size = dataStudent.size();
+            int flag = 0;
             System.out.println(size);
             String[][] c1 = new String[size][8];
             for (int i = 0; i < size; i++) {
@@ -83,16 +84,17 @@ public class StudentLoginPage implements ActionListener {
                     c1[i][j] = s1[j];
                 }
                 if (c1[i][0].equals(userID) && c1[i][2].equals(password)) {
-                    // frame.dispose();
-                    new ViewStudents();
-                    break;
-                } else {
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Login failed");
+                    new ViewStudentIssuedBooks(userID);
                     userPasswordField.setText("");
+                    userIDField.setText("");
+                    flag = 1;
+                    break;
                 }
             }
-
+            if(flag == 0) {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Login failed");
+            }
         }
 
     }

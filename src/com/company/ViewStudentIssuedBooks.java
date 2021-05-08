@@ -5,12 +5,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ViewIssuedBooks {
+public class ViewStudentIssuedBooks {
     public static void main(String[] args) {
-        new ViewIssuedBooks();
+        new ViewStudentIssuedBooks("70552");
     }
 
-    ViewIssuedBooks() {
+    ViewStudentIssuedBooks(String userID_1) {
         // Creating Frame
         JFrame viewIssuedBooksFrame = new JFrame();
 
@@ -22,16 +22,25 @@ public class ViewIssuedBooks {
         UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
         data = userData.getData();
         int size = data.size();
+        String[] s = {};
         String[][] c = new String[size][6];
+        String[][] c_trash = new String[size][6];
         int ID = 0;
         for (int i = 0; i < size; i++) {
-            c[i][0] = Integer.toString(++ID);
             for (int j = 0; j < 5; j++) {
-                String[] s = data.get(i).split(",");
-                c[i][j + 1] = s[j];
+                s = data.get(i).split(",");
+                c_trash[i][j + 1] = s[j];
             }
         }
-        String[] columnsNames = { "ID", "Book Calling", "Student ID", "Student Name", "Contact", "Issue Date" };
+        for (int i = 0; i < size; i++) {
+            if ((c_trash[i][2]).equals(userID_1)) {
+                c[i][0] = Integer.toString(++ID);
+                for (int j = 0; j < 5; j++) {
+                    c[i][j + 1] = s[j];
+                }
+            }
+        }
+        String[] columnsNames = {"ID", "Book Calling", "Student ID", "Student Name", "Contact", "Issue Date"};
         JTable viewIssuedBooksTable = new JTable(c, columnsNames);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
