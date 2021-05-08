@@ -9,16 +9,9 @@ public class IssueValidity {
     private ArrayList<String> dataBook;
 
     private final UserData studentData = new UserData(".\\src\\com\\company\\StudentDB.txt");
-    private final UserData bookData = new UserData(".\\src\\com\\company\\books.txt");
+    private final UserData bookData = new UserData(".\\src\\com\\company\\Books.txt");
     private String[][] c1;
     private String[][] c2;
-
-    // public static void main(String[] args) {
-    // IssueValidity v=new IssueValidity();
-    // System.out.println(v.canStudentIssue(7052));
-    // System.out.println(v.canBeIssuedBook(705));
-    // v.decQuantityIncIssued();
-    // }
 
     public int canStudentIssue(int ID) {
         int validStudent = 0;
@@ -43,9 +36,9 @@ public class IssueValidity {
         dataBook = bookData.getData();
         int size = dataBook.size();
         // System.out.println(dataBook);
-        c2 = new String[size][5];
+        c2 = new String[size][6];
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 6; j++) {
                 String[] s2 = dataBook.get(i).split(",");
                 c2[i][j] = s2[j];
             }
@@ -74,9 +67,9 @@ public class IssueValidity {
         c2[indexBook][4] = Integer.toString(Integer.parseInt(c2[indexBook][4]) - 1);
         bookData.removeUser(dataBook, indexBook);
         StringBuilder temp2 = new StringBuilder();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             temp2.append(c2[indexBook][i]);
-            if (i != 4)
+            if (i != 5)
                 temp2.append(",");
         }
         bookData.addUser(dataBook, temp2.toString());

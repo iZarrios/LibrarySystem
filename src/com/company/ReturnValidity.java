@@ -24,8 +24,8 @@ public class ReturnValidity {
     private ArrayList<String> dataIssuedBook;
 
     private final UserData studentData = new UserData(".\\src\\com\\company\\StudentDB.txt");
-    private final UserData bookData = new UserData(".\\src\\com\\company\\books.txt");
-    private final UserData issuedBooksData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
+    private final UserData bookData = new UserData(".\\src\\com\\company\\Books.txt");
+    private final UserData issuedBooksData = new UserData(".\\src\\com\\company\\IssuedBooks.txt");
 
     private String[][] c0;
     private String[][] c1;
@@ -68,9 +68,9 @@ public class ReturnValidity {
     private int getBook() {
         dataBook = bookData.getData();
         int size = dataBook.size();
-        c2 = new String[size][5];
+        c2 = new String[size][6];
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 6; j++) {
                 String[] s2 = dataBook.get(i).split(",");
                 c2[i][j] = s2[j];
             }
@@ -95,21 +95,23 @@ public class ReturnValidity {
         studentData.addUser(dataStudent, temp1.toString());
         studentData.saveData();
 
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar obj = Calendar.getInstance();
+        String todayDate = format.format(obj.getTime());
+
         int indexBook = getBook();
         c2[indexBook][4] = Integer.toString(Integer.parseInt(c2[indexBook][4]) + 1);
+        c2[indexBook][5] = todayDate;
         bookData.removeUser(dataBook, indexBook);
+
         StringBuilder temp2 = new StringBuilder();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             temp2.append(c2[indexBook][i]);
-            if (i != 4)
+            if (i != 5)
                 temp2.append(",");
         }
         bookData.addUser(dataBook, temp2.toString());
         bookData.saveData();
-        String todayDate;
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar obj = Calendar.getInstance();
-        todayDate = format.format(obj.getTime());
         try {
             if (format.parse(todayDate).compareTo(format.parse(c0[indexIssuedBook][4])) > 0)
                 JOptionPane.showMessageDialog(null, "There is a financial Penalty");

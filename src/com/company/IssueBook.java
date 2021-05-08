@@ -124,7 +124,7 @@ public class IssueBook implements ActionListener {
             String name = studentNameField.getText();
             String contact = studentContactField.getText();
             String date = issueDateField.getText();
-            UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
+            UserData userData = new UserData(".\\src\\com\\company\\IssuedBooks.txt");
             ArrayList data = userData.getData();
             String book;
             if (CheckNumeric.isNumeric(callingNumber) && CheckNumeric.isNumeric(ID) && isStringOnlyAlphabet(name)

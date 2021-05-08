@@ -13,8 +13,8 @@ public class LibrarianLogin implements ActionListener {
     JButton resetButton = new JButton("Reset");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel userIDLabel = new JLabel("userID:");
-    JLabel userPasswordLabel = new JLabel("password:");
+    JLabel userIDLabel = new JLabel("Name :");
+    JLabel userPasswordLabel = new JLabel("Password:");
     JLabel messageLabel = new JLabel();
     JLabel adminLoginForm = new JLabel("Librarian Login Form");
 
@@ -68,7 +68,7 @@ public class LibrarianLogin implements ActionListener {
             String password = String.valueOf(userPasswordField.getPassword());
 
             ArrayList<String> dataStudent;
-            UserData studentData = new UserData(".\\src\\com\\company\\db.txt");
+            UserData studentData = new UserData(".\\src\\com\\company\\DB.txt");
             dataStudent = studentData.getData();
             int size = dataStudent.size();
             System.out.println(size);
@@ -78,7 +78,7 @@ public class LibrarianLogin implements ActionListener {
                     String[] s1 = dataStudent.get(i).split(",");
                     c1[i][j] = s1[j];
                 }
-                if (c1[i][0].equals(userID) && c1[i][2].equals(password)) {
+                if (c1[i][1].equals(userID) && c1[i][2].equals(password)) {
                     frame.dispose();
                     new LibrarianSection();
                     break;

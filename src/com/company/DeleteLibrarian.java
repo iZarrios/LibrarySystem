@@ -40,7 +40,7 @@ public class DeleteLibrarian implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         ArrayList<String> data = new ArrayList<String>();
-        UserData auth = new UserData(".\\src\\com\\company\\db.txt");
+        UserData auth = new UserData(".\\src\\com\\company\\DB.txt");
         data = auth.getData();
         int size = data.size();
         int flag = 0;

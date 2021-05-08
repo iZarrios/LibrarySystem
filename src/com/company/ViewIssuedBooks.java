@@ -16,7 +16,7 @@ public class ViewIssuedBooks {
 
         // Table
         ArrayList<String> data = new ArrayList<String>();
-        UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
+        UserData userData = new UserData(".\\src\\com\\company\\IssuedBooks.txt");
         data = userData.getData();
         int size = data.size();
         String[][] c = new String[size][6];

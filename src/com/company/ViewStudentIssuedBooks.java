@@ -18,8 +18,8 @@ public class ViewStudentIssuedBooks {
         JPanel viewIssuedBooksPanel = new JPanel();
 
         // Table
-        ArrayList<String> data = new ArrayList<String>();
-        UserData userData = new UserData(".\\src\\com\\company\\issuedBooks.txt");
+        ArrayList<String> data;
+        UserData userData = new UserData(".\\src\\com\\company\\IssuedBooks.txt");
         data = userData.getData();
         int size = data.size();
         String[] s = {};
@@ -32,8 +32,8 @@ public class ViewStudentIssuedBooks {
                 c_trash[i][j + 1] = s[j];
 
             }
-                if ((c_trash[i][2]).equals(userID_1))
-                    countSize++;
+            if ((c_trash[i][2]).equals(userID_1))
+                countSize++;
         }
         String[][] c = new String[countSize][6];
         for (int i = 0; i < size; i++) {

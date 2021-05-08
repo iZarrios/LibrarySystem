@@ -107,10 +107,10 @@ public class AddLibrarian implements ActionListener {
             String city = cityField.getText();
             String number = contactInfoField.getText();
             String user;
-            UserData auth = new UserData(".\\src\\com\\company\\db.txt");
+            UserData auth = new UserData(".\\src\\com\\company\\DB.txt");
             ArrayList data = auth.getData();
             if (isStringOnlyAlphabet(name) && isValidEMail(email) && temppassword.length != 0
-                    && isStringOnlyAlphabet(city) && address.isEmpty() && city.isEmpty() && password.isEmpty()) {
+                    && isStringOnlyAlphabet(city) && isStringOnlyAlphabet(address) && isStringOnlyAlphabet(city) && !password.isEmpty()) {
                 int count = data.size();
                 user = count + "," + name + "," + password + "," + email + "," + address + "," + city + "," + number;
                 System.out.println(user);

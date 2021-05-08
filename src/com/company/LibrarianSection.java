@@ -47,7 +47,7 @@ public class LibrarianSection implements ActionListener {
 
         logOutButton = new JButton(" Log Out");
         logOutButton.addActionListener(this);
-        logOutButton.setBounds(150, 440, 120, 50);
+        logOutButton.setBounds(160, 440, 120, 50);
 
         // Panel
         JPanel librarianPanel = new JPanel();

@@ -7,9 +7,12 @@ import javax.swing.*;
 
 public class StudentLoginPage implements ActionListener {
 
+
     // hashmap but as it is not needed here :)
+    JFrame frame;
     private final JButton loginButton = new JButton("Login");
     private final JButton resetButton = new JButton("Reset");
+    private final JButton backButton = new JButton("Back");
     private final JTextField userIDField = new JTextField();
     private final JPasswordField userPasswordField = new JPasswordField();
     private final JLabel messageLabel = new JLabel();
@@ -19,7 +22,7 @@ public class StudentLoginPage implements ActionListener {
         // private final String USERNAME = "", PASSWORD = "";// the admin account
         // credentials
         // we can add more users by making a class where it returns an array or a
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setResizable(false);
         JLabel adminLoginForm = new JLabel("Student Login Form");
         adminLoginForm.setBounds(100, 10, 220, 50);
@@ -44,6 +47,9 @@ public class StudentLoginPage implements ActionListener {
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);
 
+        backButton.addActionListener(this);
+        backButton.setBounds(180, 300, 100, 30);
+
         frame.add(adminLoginForm);
         frame.add(userIDLabel);
         frame.add(userPasswordLabel);
@@ -52,6 +58,7 @@ public class StudentLoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(resetButton);
+        frame.add(backButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLayout(null);
@@ -62,6 +69,11 @@ public class StudentLoginPage implements ActionListener {
     // done
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == backButton) {
+
+            frame.dispose();
+            new GUI();
+        }
 
         if (e.getSource() == resetButton) {
             userIDField.setText("");

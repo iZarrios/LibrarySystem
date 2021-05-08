@@ -8,7 +8,7 @@ public class ViewLibrarian {
 
     ViewLibrarian() {
         ArrayList<String> data;
-        UserData auth = new UserData(".\\src\\com\\company\\db.txt");
+        UserData auth = new UserData(".\\src\\com\\company\\DB.txt");
         data = auth.getData();
         int size = data.size();
         System.out.println(size);
