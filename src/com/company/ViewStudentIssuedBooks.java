@@ -6,10 +6,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ViewStudentIssuedBooks {
-    public static void main(String[] args) {
-        new ViewStudentIssuedBooks("7052");
-    }
 
+    public static void main(String[] args) {
+        new ViewStudentIssuedBooks("287");
+    }
     ViewStudentIssuedBooks(String userID_1) {
         // Creating Frame
         JFrame viewIssuedBooksFrame = new JFrame();
@@ -22,30 +22,29 @@ public class ViewStudentIssuedBooks {
         UserData userData = new UserData(".\\src\\com\\company\\IssuedBooks.txt");
         data = userData.getData();
         int size = data.size();
-        String[] s = {};
-        int countSize = 0;
-        String[][] c_trash = new String[size][6];
+        String[][] c1 = new String[size][6];
         int ID = 0;
+        int count=0;
         for (int i = 0; i < size; i++) {
+            c1[i][0] = Integer.toString(++ID);
             for (int j = 0; j < 5; j++) {
-                s = data.get(i).split(",");
-                c_trash[i][j + 1] = s[j];
-
+                String[] s = data.get(i).split(",");
+                c1[i][j + 1] = s[j];
             }
-            if ((c_trash[i][2]).equals(userID_1))
-                countSize++;
+            if(c1[i][2].equals(userID_1)) count++;
         }
-        String[][] c = new String[countSize][6];
+        String[][] c2 = new String[count][6];
+        int row=0;
         for (int i = 0; i < size; i++) {
-            if ((c_trash[i][2]).equals(userID_1)&& !(c_trash[i][2]).equals("")) {
-                c[i][0] = Integer.toString(++ID);
-                for (int j = 0; j < 5; j++) {
-                    c[i][j + 1] = s[j];
+            if(c1[i][2].equals(userID_1)){
+                for (int j = 0; j < 6; j++) {
+                    c2[row][j]=c1[i][j];
                 }
+                row++;
             }
         }
-        String[] columnsNames = {"ID", "Book Calling", "Student ID", "Student Name", "Contact", "Issue Date"};
-        JTable viewIssuedBooksTable = new JTable(c, columnsNames);
+        String[] columnsNames = { "ID", "Book Calling", "Student ID", "Student Name", "Contact", "Issue Date" };
+        JTable viewIssuedBooksTable = new JTable(c2, columnsNames);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int j = 0; j < 5; j++) {
