@@ -68,7 +68,7 @@ public class UserData {
                 && (!str.equals(""))// returns 1 on success
                 && (str.matches("^[a-zA-Z ]*$")));
     } // src :
-      // https://www.geeksforgeeks.org/check-if-a-string-contains-only-alphabets-in-java-using-regex/
+    // https://www.geeksforgeeks.org/check-if-a-string-contains-only-alphabets-in-java-using-regex/
 
     public static boolean isValidEMail(String email) {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ViewStudentIssuedBooks {
     public static void main(String[] args) {
-        new ViewStudentIssuedBooks("70552");
+        new ViewStudentIssuedBooks("7052");
     }
 
     ViewStudentIssuedBooks(String userID_1) {
@@ -23,17 +23,21 @@ public class ViewStudentIssuedBooks {
         data = userData.getData();
         int size = data.size();
         String[] s = {};
-        String[][] c = new String[size][6];
+        int countSize = 0;
         String[][] c_trash = new String[size][6];
         int ID = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 5; j++) {
                 s = data.get(i).split(",");
                 c_trash[i][j + 1] = s[j];
+
             }
+                if ((c_trash[i][2]).equals(userID_1))
+                    countSize++;
         }
+        String[][] c = new String[countSize][6];
         for (int i = 0; i < size; i++) {
-            if ((c_trash[i][2]).equals(userID_1)) {
+            if ((c_trash[i][2]).equals(userID_1)&& !(c_trash[i][2]).equals("")) {
                 c[i][0] = Integer.toString(++ID);
                 for (int j = 0; j < 5; j++) {
                     c[i][j + 1] = s[j];
