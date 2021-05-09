@@ -146,10 +146,10 @@ public class IssueBook implements ActionListener {
                     studentContactField.setText("");
                     issueDateField.setText("");
                 }
-                if (s.canStudentIssue(Integer.parseInt(ID)) != 1) {
+                else if (s.canStudentIssue(Integer.parseInt(ID)) != 1) {
                     JOptionPane.showMessageDialog(null, "Error in Calling student!!");
                 }
-                if (s.canBeIssuedBook(Integer.parseInt(callingNumber)) != 1) {
+                else{
                     JOptionPane.showMessageDialog(null, "Error in Calling Book!!");
                 }
 

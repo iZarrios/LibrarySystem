@@ -1,1 +1,5 @@
+308,News Letter,Amit Garg,MCA,1,08/05/2021
+310,Mobile Computing,Vinay Kumar,K Nath,0,08/05/2021
+400,Comp networks,Sharad kumar,Sun India prod,9,08/05/2021
+304,Computer intro,Amit Garg,Readers zone,9,08/05/2021
 303,how to,zizo,ayood,42,08/05/2021

@@ -36,7 +36,7 @@ public class ViewBooks {
             viewBooksTable.getColumnModel().getColumn(j).setCellRenderer(centerRenderer);
         }
         viewBooksTable.setFillsViewportHeight(true);
-        viewBooksTable.setBounds(0, 0, 500, 500);
+        viewBooksTable.setBounds(0, 0, 600, 500);
         JScrollPane sp = new JScrollPane(viewBooksTable);
         // Add to frame
         viewBooksFrame.add(viewBooksPanel, BorderLayout.CENTER);
@@ -46,7 +46,7 @@ public class ViewBooks {
         viewBooksFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         viewBooksFrame.setTitle("University Library System");
         viewBooksFrame.pack();
-        viewBooksFrame.setSize(500, 500);
+        viewBooksFrame.setSize(600, 500);
         viewBooksFrame.setVisible(true);
     }
 }
